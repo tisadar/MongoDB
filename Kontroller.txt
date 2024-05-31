@@ -1,0 +1,6 @@
+use mongoDB
+db.createCollections('Student')
+db.createCollections('Directions_of_study')
+db.createCollections('Teachers')
+db.createCollections('Study_time')
+db.createCollections('Lessons_shedule')

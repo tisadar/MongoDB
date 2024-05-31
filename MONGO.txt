@@ -1,0 +1,699 @@
+db.Directions_of_study.insertMany([
+  { name: 'Информационные системы', group: ['ИС101', 'ИС102', 'ИС103'] },
+  { name: 'Земельно – имущественные отношения', group: ['ЗИ101', 'ЗИ102', 'ЗИ103'] },
+  { name: 'Прикладная информатика', group: ['ПИ101', 'ПИ102', 'ПИ103'] }
+]);
+
+db.Teachers.insertMany([
+  { name: 'Чеглов Егор Романович', predmeti: ['Программирование'] },
+  { name: 'Щеглов Юрий Александрович', predmeti: ['Основы Web-программирования'] },
+  { name: 'Маркодеева Софья Игоревна', predmeti: ['Правоведение'] },
+  { name: 'Бакланова Елена Алексеевна', predmeti: ['Иностранный язык'] }
+]);
+
+db.Student.insertMany([
+  {
+    fullname: 'Иванова Екатерина Петровна',
+    birthday: '2003-06-15',
+    address: 'г. Москва, ул. Тверская, д. 10',
+    email: 'ekaterina_03@mail.ru',
+   group_id: 'ИС101',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Смирнов Павел Алексеевич',
+    birthday: '2002-11-18',
+    address: 'г. Санкт-Петербург, ул. Невский проспект, д. 5',
+    email: 'pavel_smirov@yandex.ru',
+   group_id: 'ИС101',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Кузнецова Анастасия Денисовна',
+    birthday: '2003-04-30',
+    address: 'г. Екатеринбург, ул. Ленина, д. 30/5',
+    email: 'anastasiakuz@gmail.com',
+   group_id: 'ИС101',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Федоров Алексей Владимирович',
+    birthday: '2002-09-05',
+    address: 'г. Красноярск, ул. Профсоюзная, д. 12',
+    email: 'alexfed_kras@mail.com',
+   group_id: 'ИС101',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Морозова София Александровна',
+    birthday: '2004-07-20',
+    address: 'г. Новосибирск, ул. Красный проспект, д. 7/3',
+    email: 'sofia_morozova2004@inbox.ru',
+   group_id: 'ИС101',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Новиков Игорь Сергеевич',
+    birthday: '2003-02-10',
+    address: 'г. Владивосток, ул. Пушкинская, д. 22',
+    email: 'iggy_novikov@mail.com',
+   group_id: 'ИС101',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Алексеева Дарья Олеговна',
+    birthday: '2001-11-29',
+    address: 'г. Самара, ул. Ленинская, д. 18',
+    email: 'dasha_alexeeva@rambler.ru',
+   group_id: 'ИС101',
+    osnova: 'ПлатнаяОсн'
+  },
+    {
+    fullname: 'Сидорова Ольга Валерьевна',
+    birthday: '2003-08-12',
+    address: 'г. Красноярск, ул. Гагарина, д. 25',
+    email: 'olga_sidorova@yandex.ru',
+   group_id: 'ИС102',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Карпов Даниил Артемович',
+    birthday: '2004-04-18',
+    address: 'г. Екатеринбург, ул. Кирова, д. 12/1',
+    email: 'danya_karpov2004@gmail.com',
+   group_id: 'ИС102',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Белова Виктория Сергеевна',
+    birthday: '2002-09-30',
+    address: 'г. Новосибирск, ул. Ленинградская, д. 9',
+    email: 'vika_bel@mail.com',
+   group_id: 'ИС102',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Кузнецов Илья Дмитриевич',
+    birthday: '2003-12-05',
+    address: 'г. Омск, ул. Пушкина, д. 14',
+    email: 'ilya_kuznetsov@rambler.ru',
+   group_id: 'ИС102',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Смирнова Алиса Владимировна',
+    birthday: '2002-03-20',
+    address: 'г. Томск, ул. Лермонтова, д. 7',
+    email: 'alisa_smirnova2002@inbox.ru',
+   group_id: 'ИС102',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Михайлов Артем Николаевич',
+    birthday: '2004-10-08',
+    address: 'г. Новосибирск, ул. Чехова, д. 5/2',
+    email: 'art_mihailov04@gmail.com',
+   group_id: 'ИС102',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Королева Екатерина Петровна',
+    birthday: '2001-11-25',
+    address: 'г. Москва, ул. Арбат, д. 30',
+    email: 'katya_koroleva@yandex.ru',
+   group_id: 'ИС102',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Петров Иван Алексеевич',
+    birthday: '2003-05-30',
+    address: 'г. Санкт-Петербург, ул. Моцарта, д. 8/5',
+    email: 'ivan_petrov_spb@mail.com',
+   group_id: 'ИС102',
+    osnova: 'Бюджет'
+  },
+ {
+    fullname: 'Зайцева Елизавета Артемовна',
+    birthday: '2003-04-17',
+    address: 'г. Челябинск, ул. Ленина, д. 20/1',
+    email: 'elizabeth_zayceva@mail.ru',
+   group_id: 'ИС103',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Соколов Андрей Викторович',
+    birthday: '2002-12-02',
+    address: 'г. Уфа, пр. Октября, д. 14',
+    email: 'andrew_sokolov@gmail.com',
+   group_id: 'ИС103',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Григорьева Александра Игоревна',
+    birthday: '2004-02-08',
+    address: 'г. Краснодар, ул. Ленинградская, д. 9/2',
+    email: 'sasha_grigorieva@yandex.ru',
+   group_id: 'ИС103',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Павлов Артём Максимович',
+    birthday: '2003-11-25',
+    address: 'г. Волгоград, ул. Комсомольская, д. 5',
+    email: 'pavlov_art@mail.com',
+   group_id: 'ИС103',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Тихонова Вера Андреевна',
+    birthday: '2002-05-13',
+    address: 'г. Киров, ул. Гагарина, д. 12',
+    email: 'vera_tikhonova2002@inbox.ru',
+   group_id: 'ИС103',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Кудрявцев Егор Валерьевич',
+    birthday: '2004-10-20',
+    address: 'г. Тюмень, ул. Советская, д. 3',
+    email: 'egor_kudryavtsev@gmail.com',
+   group_id: 'ИС103',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Лебедева Наталья Сергеевна',
+    birthday: '2002-08-07',
+    address: 'г. Иркутск, ул. Баумана, д. 8',
+    email: 'natalia_lebedeva@rambler.ru',
+   group_id: 'ИС103',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Семенов Антон Денисович',
+    birthday: '2001-12-30',
+    address: 'г. Томск, ул. Ленина, д. 5',
+    email: 'anton_semenov@mail.com',
+   group_id: 'ИС103',
+    osnova: 'Бюджет'
+  },
+ {
+    fullname: 'Егорова Анна Сергеевна',
+    birthday: '2003-09-12',
+    address: 'г. Ульяновск, ул. Ленина, д. 20/1',
+    email: 'anna_egorova@mail.ru',
+   group_id: 'ЗИ101',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Соловьев Никита Александрович',
+    birthday: '2002-12-28',
+    address: 'г. Владимир, пр. Победы, д. 14',
+    email: 'nikita_solovyev@gmail.com',
+   group_id: 'ЗИ101',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Тарасова Мария Дмитриевна',
+    birthday: '2004-01-18',
+    address: 'г. Саранск, ул. Советская, д. 9/2',
+    email: 'masha_tarasova@yandex.ru',
+   group_id: 'ЗИ101',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Сидоров Павел Артёмович',
+    birthday: '2003-11-30',
+    address: 'г. Кировоград, ул. Комсомольская, д. 5',
+    email: 'pavel_sidorov@mail.com',
+   group_id: 'ЗИ101',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Беляева Анастасия Ивановна',
+    birthday: '2002-05-19',
+    address: 'г. Пенза, ул. Гагарина, д. 12',
+    email: 'nastya_belyaeva2002@inbox.ru',
+   group_id: 'ЗИ101',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Калинина Виктория Дмитриевна',
+    birthday: '2004-11-20',
+    address: 'г. Ульяновск, ул. Баумана, д. 3',
+    email: 'vika_kalinina@gmail.com',
+   group_id: 'ЗИ101',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Миронов Дмитрий Алексеевич',
+    birthday: '2002-08-25',
+    address: 'г. Тамбов, ул. Ленина, д. 8',
+    email: 'dima_mironov@rambler.ru',
+   group_id: 'ЗИ101',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Павлова Екатерина Игоревна',
+    birthday: '2001-12-01',
+    address: 'г. Кострома, ул. Пушкина, д. 5',
+    email: 'katya_pavlova@mail.com',
+   group_id: 'ЗИ101',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Козлов Михаил Сергеевич',
+    birthday: '2001-04-09',
+    address: 'г. Липецк, ул. Мира, д. 7',
+    email: 'mikhail_kozlov@mail.com',
+   group_id: 'ЗИ101',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Семёнова Алёна Петровна',
+    birthday: '2001-06-26',
+    address: 'г. Смоленск, ул. Лермонтова, д. 24',
+    email: 'alyona_semenova@mail.com',
+   group_id: 'ЗИ101',
+    osnova: 'Бюджет'
+  },
+ {
+    fullname: 'Петрова Юлия Александровна',
+    birthday: '2003-05-14',
+    address: 'г. Владивосток, ул. Ленина, д. 20/1',
+    email: 'yulia_petrova@mail.ru',
+   group_id: 'ЗИ102',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Сорокина Екатерина Сергеевна',
+    birthday: '2002-12-29',
+    address: 'г. Хабаровск, пр. Победы, д. 14',
+    email: 'ekaterina_sorokina@gmail.com',
+   group_id: 'ЗИ102',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Денисов Даниил Александрович',
+    birthday: '2004-02-19',
+    address: 'г. Благовещенск, ул. Советская, д. 9/2',
+    email: 'daniil_denisov@yandex.ru',
+   group_id: 'ЗИ102',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Кузнецов Владимир Андреевич',
+    birthday: '2003-12-01',
+    address: 'г. Белогорск, ул. Комсомольская, д. 5',
+    email: 'vladimir_kuznetsov@mail.com',
+   group_id: 'ЗИ102',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Григорьева Анастасия Ивановна',
+    birthday: '2002-05-20',
+    address: 'г. Артём, ул. Гагарина, д. 12',
+    email: 'anastasia_grigorieva2002@inbox.ru',
+   group_id: 'ЗИ102',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Петров Игорь Викторович',
+    birthday: '2004-11-21',
+    address: 'г. Благовещенск, ул. Баумана, д. 3',
+    email: 'igor_petrov@gmail.com',
+   group_id: 'ЗИ102',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Иванова Татьяна Алексеевна',
+    birthday: '2002-08-26',
+    address: 'г. Архара, ул. Ленина, д. 8',
+    email: 'tatyana_ivanova@rambler.ru',
+   group_id: 'ЗИ102',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Сидоров Илья Антонович',
+    birthday: '2001-12-02',
+    address: 'г. Завитинск, ул. Пушкина, д. 5',
+    email: 'ilya_sidorov@mail.com',
+   group_id: 'ЗИ102',
+    osnova: 'Бюджет'
+  },
+{
+    fullname: 'Волкова Елизавета Александровна',
+    birthday: '2003-05-14',
+    address: 'г. Курган, ул. Ленина, д. 20/1',
+    email: 'elizaveta_volkova@mail.ru',
+   group_id: 'ЗИ103',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Семенов Павел Игоревич',
+    birthday: '2002-12-29',
+    address: 'г. Магнитогорск, пр. Победы, д. 14',
+    email: 'pavel_semenov@gmail.com',
+   group_id: 'ЗИ103',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Петров Даниил Александрович',
+    birthday: '2004-02-19',
+    address: 'г. Тюмень, ул. Советская, д. 9/2',
+    email: 'daniil_petrov@yandex.ru',
+   group_id: 'ЗИ103',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Иванов Владимир Андреевич',
+    birthday: '2003-12-01',
+    address: 'г. Челябинск, ул. Комсомольская, д. 5',
+    email: 'vladimir_ivanov@mail.com',
+   group_id: 'ЗИ103',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Григорьева Вероника Ивановна',
+    birthday: '2002-05-20',
+    address: 'г. Оренбург, ул. Гагарина, д. 12',
+    email: 'veronika_grigorieva2002@inbox.ru',
+   group_id: 'ЗИ103',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Козлова Виктория Александровна',
+    birthday: '2004-11-21',
+    address: 'г. Пермь, ул. Баумана, д. 3',
+    email: 'victoria_kozlova@gmail.com',
+   group_id: 'ЗИ103',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Сидорова Татьяна Владимировна',
+    birthday: '2002-08-26',
+    address: 'г. Сургут, ул. Ленина, д. 8',
+    email: 'tatyana_sidorova@rambler.ru',
+   group_id: 'ЗИ103',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Алексеев Илья Антонович',
+    birthday: '2001-12-02',
+    address: 'г. Тобольск, ул. Пушкина, д. 5',
+    email: 'ilya_alexeev@mail.com',
+   group_id: 'ЗИ103',
+    osnova: 'Бюджет'
+  },
+db.Student.insertMany([
+  {
+    fullname: 'Лебедева Алина Викторовна',
+    birthday: '2003-05-14',
+    address: 'г. Иркутск, ул. Ленина, д. 20/1',
+    email: 'alina_lebedeva@mail.ru',
+   group_id: 'ПИ101',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Максимов Даниил Петрович',
+    birthday: '2002-12-29',
+    address: 'г. Якутск, пр. Победы, д. 14',
+    email: 'daniil_maximov@gmail.com',
+   group_id: 'ПИ101',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Федорова Анна Данииловна',
+    birthday: '2004-02-19',
+    address: 'г. Владивосток, ул. Советская, д. 9/2',
+    email: 'anna_fedorova@yandex.ru',
+   group_id: 'ПИ101',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Алексеев Владислав Андреевич',
+    birthday: '2003-12-01',
+    address: 'г. Хабаровск, ул. Комсомольская, д. 5',
+    email: 'vladislav_alekseev@mail.com',
+   group_id: 'ПИ101',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Сергеева Елизавета Ивановна',
+    birthday: '2002-05-20',
+    address: 'г. Улан-Удэ, ул. Гагарина, д. 12',
+    email: 'elizaveta_sergeeva2002@inbox.ru',
+   group_id: 'ПИ101',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Ильин Александр Викторович',
+    birthday: '2004-11-21',
+    address: 'г. Чита, ул. Баумана, д. 3',
+    email: 'alexander_ilin@gmail.com',
+   group_id: 'ПИ101',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Кириллова Екатерина Владимировна',
+    birthday: '2002-08-26',
+    address: 'г. Благовещенск, ул. Ленина, д. 8',
+    email: 'ekaterina_kirillova@rambler.ru',
+   group_id: 'ПИ101',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Михайлов Андрей Игоревич',
+    birthday: '2001-12-02',
+    address: 'г. Брянск, ул. Пушкина, д. 5',
+    email: 'andrey_mikhailov@mail.com',
+   group_id: 'ПИ101',
+    osnova: 'Бюджет'
+  },
+{
+    fullname: 'Кузнецова Алиса Дмитриевна',
+    birthday: '2003-05-14',
+    address: 'г. Мурманск, ул. Ленина, д. 20/1',
+    email: 'alisa_kuznetsova@mail.ru',
+   group_id: 'ПИ102',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Медведев Дмитрий Андреевич',
+    birthday: '2002-12-29',
+    address: 'г. Белгород, пр. Победы, д. 14',
+    email: 'dmitry_medvedev@gmail.com',
+   group_id: 'ПИ102',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Соколова Варвара Александровна',
+    birthday: '2004-02-19',
+    address: 'г. Брянск, ул. Советская, д. 9/2',
+    email: 'varvara_sokolova@yandex.ru',
+   group_id: 'ПИ102',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Иванов Владимир Анатольевич',
+    birthday: '2003-12-01',
+    address: 'г. Астрахань, ул. Комсомольская, д. 5',
+    email: 'vladimir_ivanov@mail.com',
+   group_id: 'ПИ102',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Никитина Мария Викторовна',
+    birthday: '2002-05-20',
+    address: 'г. Владимир, ул. Гагарина, д. 12',
+    email: 'maria_nikitina2002@inbox.ru',
+   group_id: 'ПИ102',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Краснов Игорь Васильевич',
+    birthday: '2004-11-21',
+    address: 'г. Курск, ул. Баумана, д. 3',
+    email: 'igor_krasnov@gmail.com',
+   group_id: 'ПИ102',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Петрова Татьяна Владимировна',
+    birthday: '2002-08-26',
+    address: 'г. Ярославль, ул. Ленина, д. 8',
+    email: 'tatyana_petrova@rambler.ru',
+   group_id: 'ПИ102',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Андреев Алексей Сергеевич',
+    birthday: '2001-12-02',
+    address: 'г. Иваново, ул. Пушкина, д. 5',
+    email: 'alexey_andreev@mail.com',
+   group_id: 'ПИ102',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Иванов Артем Александрович',
+    birthday: '2003-04-15',
+    address: 'г. Владивосток, ул. Ленина, д. 10',
+    email: 'artem_ivanov@mail.ru',
+   group_id: 'ПИ103',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Сорокина Анастасия Игоревна',
+    birthday: '2004-11-20',
+    address: 'г. Йошкар-Ола, пр. Ленина, д. 5',
+    email: 'anastasia_sorokina@gmail.com',
+   group_id: 'ПИ103',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Карасёв Степан Семёнович',
+    birthday: '2004-09-07',
+    address: 'г. Петрозаводск, ул. Советская, д. 12',
+    email: 'stepan_karasyov@mail.com',
+   group_id: 'ПИ103',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Соколова Вероника Александровна',
+    birthday: '2003-04-23',
+    address: 'г. Ярославль, ул. Победы, д. 15',
+    email: 'veronika_sokolova@mail.com',
+   group_id: 'ПИ103',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Игнатьев Глеб Денисович',
+    birthday: '2004-09-05',
+    address: 'г. Мурманск, пр. Мира, д. 8',
+    email: 'gleb_ignatiev@mail.com',
+   group_id: 'ПИ103',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Семёнова Дарья Андреевна',
+    birthday: '2003-01-29',
+    address: 'г. Калуга, ул. Пушкина, д. 7',
+    email: 'darya_semenova@mail.com',
+   group_id: 'ПИ103',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Поляков Артём Фёдорович',
+    birthday: '2001-02-06',
+    address: 'г. Владикавказ, ул. Гагарина, д. 24',
+    email: 'artem_polyakov@mail.com',
+   group_id: 'ПИ103',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Колобова Мария Сергеевна',
+    birthday: '2004-08-28',
+    address: 'г. Вологда, пр. Ленина, д. 3',
+    email: 'maria_kolobova@mail.com',
+   group_id: 'ПИ103',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Кудряшов Иван Алексеевич',
+    birthday: '2004-12-07',
+    address: 'г. Барнаул, ул. Победы, д. 6',
+    email: 'ivan_kudryashov@mail.com',
+   group_id: 'ПИ103',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Малышева Дарья Николаевна',
+    birthday: '2003-01-18',
+    address: 'г. Чебоксары, ул. Гагарина, д. 9',
+    email: 'darya_malysheva@mail.com',
+   group_id: 'ПИ103',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Полякова Мария Анатольевна',
+    birthday: '2004-08-28',
+    address: 'г. Тула, ул. Ленина, д. 22',
+    email: 'maria_polyakova@mail.com',
+   group_id: 'ПИ103',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Николаева Евгения Васильевна',
+    birthday: '2003-06-26',
+    address: 'г. Саранск, ул. Пушкина, д. 8',
+    email: 'evgenia_nikolaeva@mail.com',
+   group_id: 'ПИ103',
+    osnova: 'ПлатнаяОсн'
+  },
+  {
+    fullname: 'Лебедева Ксения Александровна',
+    birthday: '2002-09-13',
+    address: 'г. Курган, пр. Победы, д. 19',
+    email: 'ksenia_lebedeva@mail.com',
+   group_id: 'ПИ103',
+    osnova: 'Бюджет'
+  },
+  {
+    fullname: 'Павлова Виктория Алексеевна',
+    birthday: '2003-02-08',
+    address: 'г. Тобольск, ул. Ленина, д. 23',
+    email: 'victoria_pavlova@mail.com',
+   group_id: 'ПИ103',
+    osnova: 'Бюджет'
+  }
+]);
+
+
+db.Study_time.insertMany([
+  { nomber: 1, time_start: '8:00', time_end: '9:30' },
+  { nomber: 2, time_start: '9:40', time_end: '11:10' },
+  { nomber: 3, time_start: '11:25', time_end: '12:55' },
+  { nomber: 4, time_start: '13:20', time_end: '14:50' },
+  { nomber: 5, time_start: '15:05', time_end: '16:35' },
+  { nomber: 6, time_start: '16:50', time_end: '18:20' },
+  { nomber: 7, time_start: '18:30', time_end: '20:00' },
+  { nomber: 8, time_start: '20:05', time_end: '21:35' }
+]);
+
+db.Lessons_shedule.insertMany([
+  { predmeti:'Программирование', time_nomber: 1, date: '2023-11-30' },
+  { predmeti:'Программирование', time_nomber: 2, date: '2023-11-25' },
+  { predmeti:'Программирование', time_nomber: 3, date: '2023-11-20' },
+  { predmeti:'Программирование', time_nomber: 4, date: '2023-11-18' },
+  { predmeti:'Программирование', time_nomber: 5, date: '2023-11-29' },
+  { predmeti:'Программирование', time_nomber: 6, date: '2023-11-07' },
+  { predmeti:'Программирование', time_nomber: 7, date: '2023-11-03' },
+  { predmeti:'Программирование', time_nomber: 8, date: '2023-11-01' },
+  {predmeti: 'Основы Web-программирования', time_nomber: 1, date: '2023-11-20' },
+  {predmeti: 'Основы Web-программирования', time_nomber: 2, date: '2023-11-10' },
+  {predmeti: 'Основы Web-программирования', time_nomber: 3, date: '2023-11-18' },
+  {predmeti: 'Основы Web-программирования', time_nomber: 4, date: '2023-11-05' },
+  {predmeti: 'Основы Web-программирования', time_nomber: 5, date: '2023-11-27' },
+  {predmeti: 'Основы Web-программирования', time_nomber: 6, date: '2023-11-06' },
+  {predmeti: 'Основы Web-программирования', time_nomber: 7, date: '2023-11-25' },
+  {predmeti: 'Основы Web-программирования', time_nomber: 8, date: '2023-11-13' },
+  {predmeti:'Правоведение', time_nomber: 1, date: '2023-11-01' },
+  {predmeti:'Правоведение', time_nomber: 2, date: '2023-11-21' },
+  {predmeti:'Правоведение', time_nomber: 3, date: '2023-11-10' },
+  {predmeti:'Правоведение', time_nomber: 4, date: '2023-11-15' },
+  {predmeti:'Правоведение', time_nomber: 5, date: '2023-11-01' },
+  {predmeti:'Правоведение', time_nomber: 6, date: '2023-11-06' },
+  {predmeti:'Правоведение', time_nomber: 7, date: '2023-11-15' },
+  {predmeti:'Правоведение', time_nomber: 8, date: '2023-11-30' },
+  {predmeti:'Иностранный язык', time_nomber: 1, date: '2023-11-20' },
+  {predmeti:'Иностранный язык', time_nomber: 2, date: '2023-11-25' },
+  {predmeti:'Иностранный язык', time_nomber: 3, date: '2023-11-24' },
+  {predmeti:'Иностранный язык', time_nomber: 4, date: '2023-11-20' },
+  {predmeti:'Иностранный язык', time_nomber: 5, date: '2023-11-01' },
+  {predmeti:'Иностранный язык', time_nomber: 6, date: '2023-11-06' },
+  {predmeti:'Иностранный язык', time_nomber: 7, date: '2023-11-20' },
+  {predmeti:'Иностранный язык', time_nomber: 8, date: '2023-11-16' },
+  {predmeti:'ИС', time_nomber: 1, date: '2023-11-22' },
+  {predmeti:'ИС', time_nomber: 2, date: '2023-11-10' },
+  {predmeti:'ИС', time_nomber: 3, date: '2023-11-14' },
+  {predmeti:'ИС', time_nomber: 4, date: '2023-11-18' }
+]);
