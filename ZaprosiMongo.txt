@@ -1,0 +1,344 @@
+db.Student.aggregate([
+    {
+        $lookup: {
+            from: "Directions_of_study",
+            localField: "group_id",
+            foreignField: "group",
+            as: "direction"
+        }
+    },
+    { $unwind: "$direction" },
+    { $match: { "direction.name": "Информационные системы" } }, 
+    {
+        $project: {
+            fullname: 1,
+            osnova: 1,
+            group_id: 1
+        }
+    },
+    { $sort: { fullname: 1 } },
+    {
+        $group: {
+            _id: "$group_id",
+            students: { $push: { fullname: "$fullname", osnova: "$osnova" } }
+        }
+    }
+]).pretty();
+
+db.Student.aggregate([
+    {
+        $lookup: {
+            from: "Directions_of_study",
+            localField: "group_id",
+            foreignField: "group",
+            as: "direction"
+        }
+    },
+    { $unwind: "$direction" },
+    {
+        $match: {
+            fullname: { $regex: "^А" } 
+        }
+    },
+    {
+        $project: {
+            fullname: 1,
+            group_id: 1,
+            "direction.name": 1
+        }
+    }
+]).pretty();
+
+db.Student.aggregate([
+    {
+        $lookup: {
+            from: "Directions_of_study",
+            localField: "group_id",
+            foreignField: "group",
+            as: "direction"
+        }
+    },
+    { $unwind: "$direction" },
+    {
+        $project: {
+            fullname: { $arrayElemAt: [{ $split: ["$fullname", " "] }, 0] },
+            initials: {
+                $concat: [
+                    { $substr: [{ $arrayElemAt: [{ $split: ["$fullname", " "] }, 1] }, 0, 1] },
+                    ".",
+                    { $substr: [{ $arrayElemAt: [{ $split: ["$fullname", " "] }, 2] }, 0, 1] },
+                    "."
+                ]
+            },
+            day: { $dayOfMonth: "$birthday" },
+            month: { $month: "$birthday" },
+            group_id: 1,
+            "direction.name": 1
+        }
+    },
+    {
+        $project: {
+            fullname: { $concat: ["$fullname", " ", "$initials"] },
+            day: 1,
+            month: {
+                $switch: {
+                    branches: [
+                        { case: { $eq: ["$month", 1] }, then: "января" },
+                        { case: { $eq: ["$month", 2] }, then: "февраля" },
+                        { case: { $eq: ["$month", 3] }, then: "марта" },
+                        { case: { $eq: ["$month", 4] }, then: "апреля" },
+                        { case: { $eq: ["$month", 5] }, then: "мая" },
+                        { case: { $eq: ["$month", 6] }, then: "июня" },
+                        { case: { $eq: ["$month", 7] }, then: "июля" },
+                        { case: { $eq: ["$month", 8] }, then: "августа" },
+                        { case: { $eq: ["$month", 9] }, then: "сентября" },
+                        { case: { $eq: ["$month", 10] }, then: "октября" },
+                        { case: { $eq: ["$month", 11] }, then: "ноября" },
+                        { case: { $eq: ["$month", 12] }, then: "декабря" }
+                    ],
+                    default: "Unknown"
+                }
+            },
+            group_id: 1,
+            "direction.name": 1
+        }
+    },
+    { $sort: { month: 1, day: 1 } }
+]).pretty();
+
+db.Student.aggregate([
+    {
+        $addFields: {
+            age: {
+                $floor: {
+                    $divide: [{ $subtract: [new Date(), "$birthday"] }, 1000 * 60 * 60 * 24 * 365]
+                }
+            }
+        }
+    },
+    {
+        $project: {
+            fullname: 1,
+            age: 1
+        }
+    }
+]).pretty();
+
+db.Student.aggregate([
+    {
+        $addFields: {
+            birthMonth: { $month: "$birthday" }
+        }
+    },
+    {
+        $match: {
+            birthMonth: new Date().getMonth() + 1
+        }
+    },
+    {
+        $project: {
+            fullname: 1,
+            birthday: 1,
+            group_id: 1
+        }
+    }
+]).pretty();
+
+db.Student.aggregate([
+    {
+        $lookup: {
+            from: "Directions_of_study",
+            localField: "group_id",
+            foreignField: "group",
+            as: "direction"
+        }
+    },
+    { $unwind: "$direction" },
+    {
+        $group: {
+            _id: "$direction.name",
+            count: { $sum: 1 }
+        }
+    }
+]).pretty();
+
+db.Student.aggregate([
+    {
+        $group: {
+            _id: { group_id: "$group_id", osnova: "$osnova" },
+            count: { $sum: 1 }
+        }
+    },
+    {
+        $lookup: {
+            from: "Directions_of_study",
+            localField: "_id.group_id",
+            foreignField: "group",
+            as: "direction"
+        }
+    },
+    { $unwind: "$direction" },
+    {
+        $group: {
+            _id: { group_id: "$_id.group_id", direction: "$direction.name" },
+            counts: {
+                $push: { osnova: "$_id.osnova", count: "$count" }
+            }
+        }
+    }
+]).pretty();
+
+db.Teachers.aggregate([
+    { $unwind: "$predmeti" },
+    {
+        $lookup: {
+            from: "Student",
+            localField: "predmeti",
+            foreignField: "group_id",
+            as: "students"
+        }
+    },
+    {
+        $project: {
+            predmeti: 1,
+            name: 1,
+            students: { fullname: 1, group_id: 1 }
+        }
+    }
+]).pretty();
+
+db.Teachers.aggregate([
+    { $unwind: "$predmeti" },
+    {
+        $lookup: {
+            from: "Student",
+            localField: "predmeti",
+            foreignField: "group_id",
+            as: "students"
+        }
+    },
+    {
+        $group: {
+            _id: "$predmeti",
+            studentCount: { $sum: { $size: "$students" } }
+        }
+    },
+    { $sort: { studentCount: -1 } },
+    { $limit: 1 }
+]).pretty();
+
+db.Students.aggregate([
+    {
+        $lookup: {
+            from: "Directions_of_study",
+            localField: "group_id",
+            foreignField: "group",
+            as: "direction"
+        }
+    },
+    {
+        $unwind: "$direction"
+    },
+    {
+        $lookup: {
+            from: "Teachers",
+            localField: "direction.name",
+            foreignField: "predmeti",
+            as: "teachers"
+        }
+    },
+    {
+        $unwind: "$teachers"
+    },
+    {
+        $group: {
+            _id: "$teachers.name",
+            student_count: { $sum: 1 }
+        }
+    }
+]);
+
+db.Classes.aggregate([
+    { $match: { subject: "Программирование" } }, 
+    {
+        $group: {
+            _id: "$subject",
+            visited_count: { $sum: { $cond: ["$attended", 1, 0] } }
+        }
+    }
+]);
+
+db.Classes.aggregate([
+    { $match: { subject: "Основы Web-программирования" } }, 
+    {
+        $group: {
+            _id: "$subject",
+            missed_count: { $sum: { $cond: ["$attended", 0, 1] } }
+        }
+    }
+]);
+
+db.Classes.aggregate([
+    { $match: { teacher: "Маркодеева Софья Игоревна" } }, // Укажите нужного преподавателя
+    {
+        $lookup: {
+            from: "Students",
+            localField: "students",
+            foreignField: "fullname",
+            as: "students_details"
+        }
+    },
+    {
+        $project: {
+            _id: 0,
+            teacher: 1,
+            subject: 1,
+            date: 1,
+            student_count: { $size: "$students_details" }
+        }
+    }
+]);
+
+db.Classes.aggregate([
+    {
+        $unwind: "$students"
+    },
+    {
+        $group: {
+            _id: {
+                student: "$students",
+                subject: "$subject"
+            },
+            total_time: { $sum: "$duration" }
+        }
+    },
+    {
+        $group: {
+            _id: "$_id.student",
+            subjects: {
+                $push: {
+                    subject: "$_id.subject",
+                    total_time: "$total_time"
+                }
+            }
+        }
+    },
+    {
+        $lookup: {
+            from: "Students",
+            localField: "_id",
+            foreignField: "fullname",
+            as: "student_details"
+        }
+    },
+    {
+        $unwind: "$student_details"
+    },
+    {
+        $project: {
+            _id: 0,
+            fullname: "$student_details.fullname",
+            subjects: 1
+        }
+    }
+]);
